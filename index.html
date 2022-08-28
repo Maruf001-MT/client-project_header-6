@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- ubuntu font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-transform: uppercase;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: bold;
+        }
+        body{
+            width: 100%;
+        }
+        .header{
+           position: fixed;
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           background-color: black;
+           padding: 15px 80px;
+           width: 100%;
+        }
+        .sidemenu a img{
+            width: 100px;
+        }
+        .header .logo img{
+            width: 80px;
+        }
+        .header .middle-button{
+            transition: 0.5s;
+        }
+        .header .middle-button a{
+            text-decoration: none;
+            color: white;
+            background-color: rgb(251, 46, 87);
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgb(251, 46, 87);
+            letter-spacing: 2px;
+        }
+
+        .header .middle-button:hover{
+            transform: scale(0.9);
+
+        }
+
+        .menu p{
+            color: white;
+            font-size: 1.1rem;
+            padding-left: 30px;
+        }
+        #toggle.active{
+        background:#00EAD3;
+      }
+      .toggle-menu{
+          width: 60px;
+          height: 50px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          cursor: pointer;
+      } 
+      #toggle{
+
+        transition:0.2s;
+      }
+      #toggle.active::before{
+      transform:translateY(0px) rotate(45deg);
+      box-shadow:0 0 0 rgb(255, 255, 255);
+      }
+      #toggle::before{
+        content:'';
+        position:absolute;
+        background:rgb(255, 255, 255);
+        width:20px;
+        height:3px;
+        transition:0.2s;
+        box-shadow:0 8px 0 rgb(255, 255, 255);
+        transform:translateY(-8px);
+      }
+      #toggle::after{
+        content:'';
+        position:absolute;
+        background:rgb(255, 255, 255);
+        width:20px;
+        height:3px;
+        transition:0.2s;
+        transform:translateY(8px);
+      }
+      #toggle.active::after{
+        transform:translateY(0px) rotate(-45deg);
+      }
+
+      .sidemenu{
+        position:fixed;
+        top:0;
+        left:-30%;
+        width:30%;
+        height:100%;
+        background:white;
+        z-index:1;
+        overflow-x:hidden;
+        transition:0.5s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+     }
+
+     .sidemenu a{
+        text-decoration:none;
+        display:block;
+        color:black;
+        padding:10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: 0.3s;
+     }
+     
+    .sidemenu a:hover{
+        transform: scale(1.1);
+    }
+    .sidemenu.active{
+        left: 0%;
+    }
+    .sidemenu .quote-btn{
+        margin-top: 20px;
+    }
+    .sidemenu .quote-btn a{
+        padding: 10px 15px;
+        background-color: rgb(251, 46, 87);
+        border-radius: 20px;
+        color: white;
+    }
+    .sidemenu .contactInfo{
+        margin-top: 20px;
+        border-top: 1px solid grey;
+    }
+    .sidemenu .contactInfo a{
+        text-transform: none;
+        text-align: center;
+    }
+    .sidemenu .contactInfo i{
+        font-size: 1.5rem;
+        padding-top: 10px;
+        padding-right: 10px;
+    }
+
+    @media screen and (max-width: 720px){
+        .header .middle-button{
+            position: absolute;
+            top: 105px;     
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0px 10px;
+            left: 0;
+        }
+        .header .middle-button a{
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        .header{
+            padding: 15px 20px 80px 20px;
+            border-radius: 0px 0px 20px 20px;
+        }
+        .sidemenu{
+            left: -70%;
+            width: 70%;
+        }
+        .sidemenu a{
+            font-size: 0.9rem;
+        }
+        .sidemenu .contactInfo i{
+            font-size: 1rem;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    <section class="header">
+        <div class="logo">
+            <img src="https://www.linkpicture.com/q/JacoVIP-CrownLogo.png" alt="">
+        </div>
+        <div class="middle-button">
+            <a href="https://jacovip.com/contact/index.php">
+                START PLANNING YOUR AMAZING VACATION</a>
+        </div>  
+        <div class="menu">
+            <div class="toggle-menu">
+                <div id="toggle"></div>
+                <p>Menu</p>
+            </div>
+            <div id="menu" class="sidemenu">
+                <a href="/"><img src="https://www.linkpicture.com/q/JacoVIP-CrownLogo.png" alt=""></a><br>
+                <a href="https://jacovip.com/JacoBeachVacationRentals.html">Vacation Rentals</a>
+                <a href="https://jacovip.com/CostaRicaBachelorParty.html">Bachelor Party</a>
+                <a href="https://jacovip.com/CostaRicaFishingCharters.html">Fishing Charters</a>
+                <a href="https://jacovip.com/JacoBeachToursCostaRica.html">Tours & Day Trips</a>
+                <a href="https://jacovip.com/PartyLikeARockStar.html">PartyLikeARockStar</a>
+                <a href="https://jacovip.com/costa-rica-vacation-services.html">VIP Services</a>
+                <div class="quote-btn">
+                    <a href="https://jacovip.com/contact/index.php"><i>Get a Quote</i></a>
+                </div>
+                <div class="contactInfo">
+                    <a href="tel:800-676-0717"><i class="fa-solid fa-phone"></i>Call Toll Free: 800-676-0717</a>
+                    <a href="mailto:info@jacovip.com"><i class="fa-solid fa-envelope"></i>Email: info@jacovip.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        const navigation=document.querySelector('.sidemenu');
+        const toggle=document.querySelector('#toggle');
+    
+        document.querySelector('.toggle-menu').onclick=function(){
+        toggle.classList.toggle('active');
+         navigation.classList.toggle('active');
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
